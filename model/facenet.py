@@ -181,9 +181,22 @@ class FaceNetNN2(nn.Module):
         # 17) fully connected
         self.fc = nn.Linear(1024, embedding_dim)
 
-    def forward(self, x):
-        # Table 2 — EXACT sequence
+        self._init_weights(self)
 
+    def _init_weights(self, module):
+        if isinstance(module, nn.Conv2d):
+            nn.init.kaiming_normal_(module.weight, mode='fan_out', nonlinearity='relu')
+            if module.bias is not None:
+                nn.init.zeros_(module.bias)
+        elif isinstance(module, nn.BatchNorm2d):
+            nn.init.ones_(module.weight)
+            nn.init.zeros_(module.bias)
+        elif isinstance(module, nn.Linear):
+            nn.init.normal_(module.weight, 0.0, 0.01)
+            nn.init.zeros_(module.bias)
+
+
+    def forward(self, x):
         x = self.conv1(x)
         x = self.pool1(x)
         x = self.norm1(x)

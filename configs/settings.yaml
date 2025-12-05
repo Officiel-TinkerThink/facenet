@@ -6,14 +6,14 @@ train:
   checkpoints: 'checkpoints'
   data_dir: 'data\celeba'
   epochs: 1
-  batch_p: 32
-  batch_k: 4
+  batch_p: 16
+  batch_k: 2
   margin: 0.2
   lr: 0.0001
   optimizer: SGD
   weight_decay: 0.0001
   embedding_dim: 128
-  max_people: 20
+  max_people: 32
   save_every: 10
 
 # Transform
