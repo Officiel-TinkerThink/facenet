@@ -51,9 +51,9 @@ class CelebADataset(Dataset):
                                  header=None, names=['image', 'person_id'])
         
         # Load split file
-        split_file = os.path.join(self.root_dir, 'list_eval_partition.csv')
-        split_df = pd.read_csv(split_file, sep=',', 
-                              header=0,names=['image', 'split'])
+        split_file = os.path.join(self.root_dir, 'list_eval_partition.txt')
+        split_df = pd.read_csv(split_file, sep=' ', 
+                              header=None,names=['image', 'split'])
         
         # Merge
         merged = pd.merge(identity_df, split_df, on='image')
