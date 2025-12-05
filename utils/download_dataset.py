@@ -1,2 +1,2 @@
-import torchvision.datasets import CelebA
-dataset = CelebA(root="./.data", split='train', download=True)
+from torchvision import datasets
+dataset = datasets.CelebA(root="./.data", split='train', download=True)
