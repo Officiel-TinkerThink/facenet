@@ -1,0 +1,31 @@
+# Model & Training
+logging:
+  project: bottle_cap_detection
+
+train:
+  checkpoints: 'checkpoints'
+  data_dir: 'data\celeba'
+  epochs: 1
+  batch_p: 32
+  batch_k: 4
+  margin: 0.2
+  lr: 0.0001
+  optimizer: SGD
+  weight_decay: 0.0001
+  embedding_dim: 128
+  max_people: 20
+  save_every: 10
+
+# Transform
+transform:
+  resize: 244
+  mean: [0.485, 0.456, 0.406]
+  std: [0.229, 0.224, 0.225]
+
+# Inference
+infer:
+  model_path: bottle_cap_detection/train_b8_ep500_im320/weights/best.pt
+  project: "bottle_cap_detection/train_b8_ep500_im320/"
+  name: predictions
+  conf: 0.5
+  iou: 0.5
