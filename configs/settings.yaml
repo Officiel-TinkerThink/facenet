@@ -4,7 +4,7 @@ logging:
 
 train:
   checkpoints: 'checkpoints'
-  data_dir: 'data\celeba'
+  data_dir: 'data/celeba'
   epochs: 1
   batch_p: 16
   batch_k: 2
